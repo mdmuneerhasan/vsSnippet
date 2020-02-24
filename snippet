@@ -55,24 +55,27 @@
 		  "}"
 		],
 		"description": "loop"
-	  },
-	  "take a graph": {
+	  },"add graph": {
 		"prefix": "graphin",
 		"body": [
-		  "cin >> n;",
-		  "for(int i=0;i<n;i++){",
-		  "   cin >> startPoint >> endPoint;",
-		  "   adjList[startPoint].push_back(endPoint);",
-		  "   adjList[endPoint].push_back(startPoint);",
+		  "adjList.clear();",
+		  "visited.clear();",
+		  "cin >>nodes>>edges;",
+		  "for(int i=0;i<edges;i++){",
+		  "		cin >> startPoint >> endPoint;",
+		  "		adjList[startPoint].push_back(endPoint);",
+		  "		adjList[endPoint].push_back(startPoint);",
 		  "} ",
+		  "show();",
 		  ""
 		],
-		"description": "take a graph"
+		"description": "add graph"
 	  },
-
-	  "print a graph": {
-		"prefix": "graphout",
+	  "show graph": {
+		"prefix": "showgraph",
 		"body": [
+		  "int nodes,edges;",
+		  "unordered_map<int,int> visited;",
 		  "unordered_map<int,list<int>> adjList;",
 		  "void show(){",
 		  "    for(auto x:adjList){",
@@ -83,10 +86,24 @@
 		  "        cout <<endl;",
 		  "    }",
 		  "}",
+		  "int dfs(int src,int par){",
+		  "    visited[src]=1;",
+		  "    int k=0;",
+		  "	cout << src << \" \";",
+		  "    for(auto x: adjList[src]){",
+		  "        if(x!=par){",
+		  "            if(!visited[x]){",
+		  "                k+=dfs(x,src);",
+		  "            }",
+		  "        }",
+		  "    }",
+		  "    return k;",
+		  "}",
 		  ""
 		],
-		"description": "take a graph"
-	  },
+		"description": "add graph"
+	  }
+	  ,
 	  "loop3": {
 		"prefix": "fork",
 		"body": [
@@ -160,8 +177,8 @@
 	  "show 2d vector": {
 		"prefix": "show2",
 		"body": [
-		  "for(int q=0;q<${1:arr2.size()};q++){",
-		  "  for(int r=0;r<${2:arr2[0].size()};r++){",
+		  "for(int q=0;q<row;q++){",
+		  "  for(int r=0;r<col;r++){",
 		  "    cout  << ${3:arr2}[q][r]<<\" \";",
 		  "  }",
 		  "  cout <<endl;",
@@ -237,7 +254,6 @@
 		  "    cout << i <<\":\"<<${1:arr}[i] << \",\\n\";",
 		  "}",
 		  "cout <<endl;",
-		  "",
 		  ""
 		],
 		"description": "show array"
@@ -286,8 +302,9 @@
 		"prefix": "showm",
 		"body": [
 		  "for(auto x:${dp}){",
-		  "    cout << x.first <<\":\"<<x.second<<endl;",
-		  "}"
+			"    cout << x.first <<\":\"<<x.second<<endl;",
+			"}",
+			"cout <<endl;"
 		],
 		"description": "print map"
 	  },
@@ -311,6 +328,20 @@
 		  ""
 		],
 		"description": "power"
+	  },
+	  "print segment tree": {
+		"prefix": "showseg",
+		"body": [
+		  "void print(int par=0,string indent=\"\",string child=\"\"){",
+		  "    if(par>=${1:vec}.size())return;",
+		  "    cout <<\"\\n\"<<indent<<\"`---\"<<${1:vec}[par];",
+		  "    if(child.size()!=0)cout<<'{'<<child<<\"}\";",
+		  "    print(2*par+1,\"\\t\"+indent,\"l\");",
+		  "    print(2*par+2,\"\\t\"+indent,\"r\");",
+		  "    return;",
+		  "}"
+		],
+		"description": "print segment tree"
 	  }
 
 
