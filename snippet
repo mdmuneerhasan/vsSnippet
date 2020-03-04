@@ -342,7 +342,31 @@
 		  "}"
 		],
 		"description": "print segment tree"
+	  },
+	  "file reader": {
+		"prefix": "reader",
+		"body": [
+		  "string readValue[10000];",
+		  "int sz=0,readCnt=0;",
+		  "void read(string path){",
+		  "        ifstream fin(path);",
+		  "        string line;",
+		  "        while (getline(fin,line))",
+		  "        {",
+		  "            stringstream vin(line);",
+		  "            while(vin>>readValue[sz++]){",
+		  "            }",
+		  "            sz--;",
+		  "        }",
+		  "}",
+		  "int getNum(){",
+		  "    return stoi(readValue[readCnt++]);",
+		  "}",
+		  "string getStr(){",
+		  "    return readValue[readCnt++];",
+		  "}",
+		  ""
+		],
+		"description": "file reader"
 	  }
-
-
 }
