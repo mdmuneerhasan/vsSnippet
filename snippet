@@ -12,6 +12,7 @@
 		  "#include<bits/stdc++.h>",
 		  "using namespace std;",
 		  "#define int long long int",
+		  "stringstream vin,vout;",
 		  "#define db(...) __f(#__VA_ARGS__, __VA_ARGS__)",
 		  "",
 		  "template <typename Arg1>",
@@ -343,30 +344,32 @@
 		],
 		"description": "print segment tree"
 	  },
-	  "file reader": {
+	  "File reader and writer": {
 		"prefix": "reader",
 		"body": [
-		  "string readValue[10000];",
-		  "int sz=0,readCnt=0;",
+		  "",
+		  "string s;",
+		  "int sz=0;",
 		  "void read(string path){",
 		  "        ifstream fin(path);",
 		  "        string line;",
 		  "        while (getline(fin,line))",
 		  "        {",
-		  "            stringstream vin(line);",
-		  "            while(vin>>readValue[sz++]){",
+		  "            stringstream kin(line);",
+		  "            while(kin>>s){",
+		  "                vin<<s+\" \";",
+		  "                sz++;",
 		  "            }",
-		  "            sz--;",
 		  "        }",
+		  "        fin.close();",
 		  "}",
-		  "int getNum(){",
-		  "    return stoi(readValue[readCnt++]);",
-		  "}",
-		  "string getStr(){",
-		  "    return readValue[readCnt++];",
+		  "void write(string path){",
+		  "        ofstream fout(path);",
+		  "        fout<<vout.str();",
+		  "        fout.close();",
 		  "}",
 		  ""
 		],
-		"description": "file reader"
+		"description": "File reader and writer"
 	  }
 }
