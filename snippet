@@ -6,9 +6,15 @@
 		],
 		"description": "print"
 	  },
-	  "new code": {
-		"prefix": "newc",
+	  "new Code ": {
+		"prefix": "newccc",
 		"body": [
+		  "/*",
+		  "* This code is submitted by Muneer Hasan",
+		  "* Computer-scince student ( @ Jamia Millia Islamia : New Delhi)",
+		  "* Email : md.muneerhasan@gmail.com",
+		  "* $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND $CURRENT_DAY_NAME $CURRENT_DATE-$CURRENT_MONTH_NAME:$CURRENT_YEAR",
+		  "*/",
 		  "#include<bits/stdc++.h>",
 		  "using namespace std;",
 		  "#define int long long int",
@@ -19,25 +25,33 @@
 		  "void __f(const char* name, Arg1&& arg1) { cout << name << \" : \" << arg1 << '\\n'; }",
 		  "template <typename Arg1, typename... Args>",
 		  "void __f(const char* names, Arg1&& arg1, Args&&... args) {",
-		  "    const char* comma = strchr(names + 1, ',');",
-		  "    cout.write(names, comma - names) << \" : \" << arg1 << \" | \"; __f(comma + 1, args...);",
+		  "	const char* comma = strchr(names + 1, ',');",
+		  "	cout.write(names, comma - names) << \" : \" << arg1 << \" | \"; __f(comma + 1, args...);",
+		  "}",
+		  "void signature(bool enable){",
+		  "	if(!enable)return;",
+		  "	cout << \"$CURRENT_DAY_NAME $CURRENT_DATE-$CURRENT_MONTH_NAME:$CURRENT_YEAR\"<<endl;",
+		  "	cout << \"Name : Muneer Hasan\"<<endl;",
+		  "	cout << \"Roll No.: 17BCS054\"<<endl;",
 		  "}",
 		  "vector<int> vec;",
-		  "int n,n1,n2,startPoint,k,endPoint,ans=0,cnt=0,q=0,qry=0;",
+		  "int n,n1,n2,startPoint,k=0,endPoint,ans=0,cnt=0,q=0,qry=0;",
 		  "",
 		  "int32_t main(){",
-		  "    ios_base::sync_with_stdio(false);",
-		  "    cin.tie(NULL);cout.tie(NULL);",
-		  "    int t;",
-		  "    //cin >>t;    while (t--)",
-		  "    {",
-		  "      //cin >> n;",
-		  "      ",
-		  "    }",
-		  "    return 0;",
+		  "	ios_base::sync_with_stdio(false);",
+		  "	cin.tie(NULL);cout.tie(NULL);",
+		  "	int t;",
+		  "	//signature(true);",
+		  "	//cin >>t;    while (t--)",
+		  "	{   ",
+		  "	  	",
+		  "	  	",
+		  "	  	",
+		  "	}",
+		  "	return 0;",
 		  "}"
 		],
-		"description": "new code"
+		"description": "new Code "
 	  },
 	  "loop1": {
 		"prefix": "fori",
@@ -61,28 +75,34 @@
 		"body": [
 		  "adjList.clear();",
 		  "visited.clear();",
-		  "cin >>nodes>>edges;",
+		  "cin >>nodes;edges=nodes-1;",
 		  "for(int i=0;i<edges;i++){",
-		  "		cin >> startPoint >> endPoint;",
-		  "		adjList[startPoint].push_back(endPoint);",
-		  "		adjList[endPoint].push_back(startPoint);",
+		  "        cin >> startPoint >> endPoint>>k;",
+		  "        adjList[startPoint].push_back(make_pair(endPoint,k));",
+		  "        adjList[endPoint].push_back(make_pair(startPoint,k));",
 		  "} ",
-		  "show();",
-		  ""
+		  "// show();",
+		  "ans=0;",
+		  "",
+		  "for(int i=1;i<=nodes;i++){",
+		  "		  visited.clear();",
+		  "       ans=max(ans,dfs(i,-1));",
+		  "}",
+		  "cout << ans<<endl;"
 		],
 		"description": "add graph"
 	  },
-	  "show graph": {
+	  "print graph": {
 		"prefix": "showgraph",
 		"body": [
 		  "int nodes,edges;",
 		  "unordered_map<int,int> visited;",
-		  "unordered_map<int,list<int>> adjList;",
+		  "unordered_map<int,list<pair<int,int>>> adjList;",
 		  "void show(){",
 		  "    for(auto x:adjList){",
 		  "        cout<< x.first << \"->\";",
 		  "        for(auto y:x.second){",
-		  "            cout << y <<\",\";",
+		  "            cout <<\"(\"<< y.first <<\",\"<<y.second<<\")\";",
 		  "        }",
 		  "        cout <<endl;",
 		  "    }",
@@ -90,11 +110,10 @@
 		  "int dfs(int src,int par){",
 		  "    visited[src]=1;",
 		  "    int k=0;",
-		  "	cout << src << \" \";",
 		  "    for(auto x: adjList[src]){",
-		  "        if(x!=par){",
-		  "            if(!visited[x]){",
-		  "                k+=dfs(x,src);",
+		  "        if(x.first!=par){",
+		  "            if(!visited[x.first]){",
+		  "                k=max(k,dfs(x.first,src)+x.second);",
 		  "            }",
 		  "        }",
 		  "    }",
@@ -102,9 +121,8 @@
 		  "}",
 		  ""
 		],
-		"description": "add graph"
-	  }
-	  ,
+		"description": "print graph"
+	  }	  ,
 	  "loop3": {
 		"prefix": "fork",
 		"body": [
@@ -136,36 +154,12 @@
 		],
 		"description": "set vector"
 	  },
-	  "print vector": {
-		"prefix": "showv",
-		"body": [
-			"q=0;",
-			  "for(auto x:${1:vec}){",
-				"    cout <<q++<<\":\"<< x<<\", \";",
-		  "}",
-		  "cout <<endl;",
-		  ""
-		],
-		"description": "print vector"
-	  },
-	  "print vector2": {
-		"prefix": "showvln",
-		"body": [
-		"q=0;",
-		  "for(auto x:${1:vec}){",
-		  "    cout <<q++<<\":\"<< x<<endl;",
-		  "}",
-		  "cout <<endl;",
-		  ""
-		],
-		"description": "print vector"
-	  },
 	  "2d vector": {
 		"prefix": "arr2",
 		"body": [
 		  "int row,col;",
-		  "cin >>row >> col;",
 		  "vector<vector<int>> ${1:arr2};",
+		  "cin >>row >> col;",
 		  "${1:arr2}.resize(row,vector<int>(col,0));",
 		  "for(int q=0;q<row;q++){",
 		  "  for(int r=0;r<col;r++){",
@@ -178,8 +172,8 @@
 	  "show 2d vector": {
 		"prefix": "show2",
 		"body": [
-		  "for(int q=0;q<row;q++){",
-		  "  for(int r=0;r<col;r++){",
+		  "for(int q=0;q<10;q++){",
+		  "  for(int r=0;r<10;r++){",
 		  "    cout  << ${3:arr2}[q][r]<<\" \";",
 		  "  }",
 		  "  cout <<endl;",
@@ -238,7 +232,7 @@
 	  "show array": {
 		"prefix": "show",
 		"body": [
-		  "for(int i=0;i<${2:n1};i++){",
+		  "for(int i=0;i<100;i++){",
 		  "    cout << i <<\":\"<<${1:arr}[i] << \", \";",
 		  "}",
 		  "cout <<endl;",
@@ -248,17 +242,6 @@
 		"description": "show array"
 	  },
 
-	  "show array linewise": {
-		"prefix": "showln",
-		"body": [
-		  "for(int i=0;i<${2:n1};i++){",
-		  "    cout << i <<\":\"<<${1:arr}[i] << \",\\n\";",
-		  "}",
-		  "cout <<endl;",
-		  ""
-		],
-		"description": "show array"
-	  },
 	  "draw Tree": {
 		"prefix": "binarytree",
 		"body": [
@@ -314,8 +297,8 @@
 		"body": [
 		  "#define MOD 1000000007",
 		  "int power(int a,int p){",
-		  "    if(p==1){",
-		  "        return a%MOD;",
+		  "    if(p==0){",
+		  "        return 1;",
 		  "    }",
 		  "    int ans=power(a,p/2)%MOD;",
 		  "    ans=ans*ans;",
@@ -330,19 +313,68 @@
 		],
 		"description": "power"
 	  },
-	  "print segment tree": {
+	  "segment tree": {
 		"prefix": "showseg",
 		"body": [
+		  "vector<int> vec2;",
+		  "vector<int> tree;",
+		  "vector<int> lazy;",
+		  "void build(int start,int end,int node ){",
+		  "    if(start==end){",
+		  "        tree[node]=vec[start];",
+		  "        return;",
+		  "    }",
+		  "    int mid=(start+end)/2;",
+		  "    build(start,mid,2*node+1);",
+		  "    build(mid+1,end,2*node+2);",
+		  "    tree[node]=(tree[2*node+1]+tree[2*node+2]);",
+		  "}",
+		  "void update(int start,int end ,int node ,int l,int r,int val){",
+		  "    if(start>end || end<l || start>r)return;",
+		  "    if(lazy[node]!=0){",
+		  "        int x=lazy[node];",
+		  "        tree[node]+=(end-start+1)*x;",
+		  "        lazy[2*node+1]=x;",
+		  "        lazy[2*node+2]=x;",
+		  "    }",
+		  "    if(start>=l && end<=r){",
+		  "        tree[node]+=val*(end-start+1);",
+		  "        lazy[2*node+1]=val;",
+		  "        lazy[2*node+2]=val;",
+		  "        return;",
+		  "    }",
+		  "    int mid=(start+end)/2;",
+		  "    update(start,mid,2*node+1,l,r,val);",
+		  "    update(mid+1,end,2*node+2,l,r,val);",
+		  "    tree[node]=(tree[2*node+1]+tree[2*node+2]);",
+		  "",
+		  "}",
+		  "int query(int start,int end ,int node ,int l,int r){",
+		  "    if(start>end || end<l || start>r)return 0;",
+		  "      if(lazy[node]!=0){",
+		  "        int x=lazy[node];",
+		  "        tree[node]+=(end-start+1)*x;",
+		  "        lazy[2*node+1]=x;",
+		  "        lazy[2*node+2]=x;",
+		  "    }",
+		  "    if(start>=l && end<=r){",
+		  "        return tree[node];",
+		  "    }",
+		  "    int mid=(start+end)/2;",
+		  "    return (",
+		  "    query(start,mid,2*node+1,l,r)+",
+		  "    query(mid+1,end,2*node+2,l,r));",
+		  "}",
 		  "void print(int par=0,string indent=\"\",string child=\"\"){",
-		  "    if(par>=${1:vec}.size())return;",
-		  "    cout <<\"\\n\"<<indent<<\"`---\"<<${1:vec}[par];",
+		  "    if(par>=tree.size())return;",
+		  "    cout <<\"\\n\"<<indent<<\"`---\"<<tree[par];",
 		  "    if(child.size()!=0)cout<<'{'<<child<<\"}\";",
 		  "    print(2*par+1,\"\\t\"+indent,\"l\");",
 		  "    print(2*par+2,\"\\t\"+indent,\"r\");",
 		  "    return;",
 		  "}"
 		],
-		"description": "print segment tree"
+		"description": "segment tree"
 	  },
 	  "File reader and writer": {
 		"prefix": "reader",
@@ -371,5 +403,22 @@
 		  ""
 		],
 		"description": "File reader and writer"
+	  },
+
+	  "stylish tree": {
+		"prefix": "showtree",
+		"body": [
+		  "",
+		  "void print2(Node * node,string indent=\"\",string child=\"\"){",
+		  "    if(node==NULL)return;",
+		  "    print2(node->right,\"\\t\"+indent,\"r\");",
+		  "    if(child==\"\")cout<<\"\\n   \"<<indent<< node->data;",
+		  "    else if(child==\"l\") cout<<\"\\n\" << indent <<\"`---\"<< node->data;",
+		  "    else if(child==\"r\") cout << \"\\n\"<<indent<<\",---\"<< node->data;",
+		  "    print2(node->left,\"\\t\"+indent,\"l\");",
+		  "    return;",
+		  "}"
+		],
+		"description": "stylish tree"
 	  }
 }
