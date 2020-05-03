@@ -1,0 +1,21 @@
+alias cd2='cd ../hack ; cd hack' 
+alias cd1='cd ../cf ; cd cf'  
+alias c='g++ $1'
+alias r='./a.out <../input >../output'
+alias create='touch test.cpp test1.cpp test2.cpp test3.cpp test4.cpp test5.cpp test6.cpp test7.cpp test8.cpp test9.cpp'
+alias t1=' g++ test1.cpp;./a.out <../input >../output'
+alias t2=' g++ test2.cpp;./a.out <../input >../output'
+alias t3=' g++ test3.cpp;./a.out <../input >../output'
+alias t4=' g++ test4.cpp;./a.out <../input >../output'
+alias t5=' g++ test5.cpp;./a.out <../input >../output'
+alias t6=' g++ test6.cpp;./a.out <../input >../output'
+alias t7=' g++ test7.cpp;./a.out <../input >../output'
+alias t8=' g++ test8.cpp;./a.out <../input >../output'
+alias t9=' g++ test9.cpp;./a.out <../input >../output'
+alias r1=' g++ test1.cpp;./a.out <../input1 >../output'
+alias r2=' g++ test2.cpp;./a.out <../input2 >../output'
+alias r3=' g++ test3.cpp;./a.out <../input3 >../output'
+echo 'Welcome Muneer Hasan ; Your terminal is all set'
+c test.cpp;r
+
+
